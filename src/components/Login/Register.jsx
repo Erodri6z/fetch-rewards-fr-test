@@ -5,6 +5,7 @@ import * as authService from '../../services/authService'
 
 const Register = props => {
   const navigate = useNavigate()
+  const [message, setMessage] = useState([''])
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -12,10 +13,14 @@ const Register = props => {
     occupation: '',
     state: ''
   })
-  
+
+  const updateMessage = msg => {
+    setMessage(msg)
+  }
 
 
   const handleChange = e => {
+    updateMessage('')
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -35,10 +40,10 @@ const Register = props => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      await authService.signup(formData, photoData.photo)
+      await authService.signUp(formData)
       navigate('/')
     } catch (err) {
-      props.updateMessage(err.message)
+      updateMessage(err.message)
     }
   }
 
