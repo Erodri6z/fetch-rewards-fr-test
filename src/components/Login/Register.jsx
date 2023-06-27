@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+// import { Link, useNavigate } from 'react-router-dom'
 import styles from './Register.module.css'
 import * as authService from '../../services/authService'
 
-const Register = props => {
-  const navigate = useNavigate()
+const Register = () => {
+  // const navigate = useNavigate()
   const [message, setMessage] = useState([''])
   const [formData, setFormData] = useState({
     fullName: '',
-    email: '',
-    password: '',
     occupation: '',
-    state: ''
+    state: '',
+    email: '',
+    password: ''
   })
 
   const updateMessage = msg => {
@@ -55,9 +55,11 @@ const Register = props => {
 
 
   return (
+    <>
+    <p>{message}</p>
     <form
-    autoComplete="off"
-    onSubmit={handleSubmit}
+      autoComplete="off"
+      onSubmit={handleSubmit}
       className={styles.container}
     >
       <div className={styles.inputContainer}>
@@ -69,8 +71,7 @@ const Register = props => {
           id="fullName"
           value={fullName}
           name="fullName"
-          onChange={handleChange}
-          />
+          onChange={handleChange} />
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="occupation" className={styles.label}>Occupation</label>
@@ -81,14 +82,14 @@ const Register = props => {
           id="occupation"
           value={occupation}
           name="occupation"
-          onChange={handleChange}
-          />
+          onChange={handleChange} />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="state">state</label>
+        <label htmlFor="state">State</label>
         <br />
-        <select name="state" id="state" value="state">
-          <option value="IL">Ilinois</option>
+        <select name="state" id="state" value={state} onChange={handleChange}>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
         </select>
       </div>
       <div className={styles.inputContainer}>
@@ -100,8 +101,7 @@ const Register = props => {
           id="email"
           value={email}
           name="email"
-          onChange={handleChange}
-        />
+          onChange={handleChange} />
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="password" className={styles.label}>Password</label>
@@ -112,8 +112,7 @@ const Register = props => {
           id="password"
           value={password}
           name="password"
-          onChange={handleChange}
-          />
+          onChange={handleChange} />
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="confirm" className={styles.label}>
@@ -126,19 +125,15 @@ const Register = props => {
           id="confirm"
           value={passwordConf}
           name="passwordConf"
-          onChange={handleChange}
-        />
+          onChange={handleChange} />
       </div>
       <div className={styles.inputContainer}>
-        
-        <button disabled={isFormInvalid()} className={styles.button} id="btn" >
+        <button disabled={isFormInvalid()} className={styles.button} id="btn">
           Sign Up
         </button>
-          <Link to="/">
-            <button className={styles.signupCancel}>Cancel</button>
-          </Link>
       </div>
     </form>
+    </>
   )
 }
 
