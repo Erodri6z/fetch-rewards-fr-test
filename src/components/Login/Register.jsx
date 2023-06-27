@@ -36,12 +36,13 @@ const Register = () => {
     }
   }
 
+  console.log(formData)
+
   
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      await authService.signUp(formData)
-      navigate('/')
+      await authService.signup(formData)
     } catch (err) {
       updateMessage(err.message)
     }
