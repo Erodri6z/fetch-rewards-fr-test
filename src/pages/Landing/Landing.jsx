@@ -1,7 +1,9 @@
-import LoginForm from "../../components/Login/LoginForm"
+import Register from "../../components/Login/Register"
+
+
 const Landing = () => {
   return(
-    <LoginForm />
+    <Register />
   )
 }
 
