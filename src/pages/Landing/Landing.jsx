@@ -3,9 +3,9 @@ import Register from "../../components/Login/Register"
 
 
 const Landing = () => {
-  useEffect (() => {
+  // useEffect (() => {
     
-  })
+  // })
   return(
     <Register />
   )

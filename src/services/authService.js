@@ -7,20 +7,23 @@ async function signup(data) {
     const response = await fetch(`${BASE_URL}/auth/login`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Set-Cookie': 'SameSite=None'
       },
       credentials: 'include',
       body: JSON.stringify(data)
     })
+    console.log(response)
 
-    if (response.ok) {
+    if (response) {
       console.log('Login successful')
-      return await response.json()
     } else {
       console.log('Login failed')
       throw new Error('Failed to login')
     }
   } catch (err) {
+  
+    console.log(err)
     throw err
   }
 }

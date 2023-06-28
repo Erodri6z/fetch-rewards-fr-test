@@ -7,11 +7,8 @@ const Register = () => {
   // const navigate = useNavigate()
   const [message, setMessage] = useState([''])
   const [formData, setFormData] = useState({
-    fullName: '',
-    occupation: '',
-    state: '',
+    name: '',
     email: '',
-    password: ''
   })
 
   const updateMessage = msg => {
@@ -40,22 +37,18 @@ const Register = () => {
 
   
   const handleSubmit = async e => {
-    let data = {
-      'name': formData.fullName,
-      'email': formData.email
-    }
     e.preventDefault()
     try {
-      await authService.signup(data)
+      await authService.signup(formData)
     } catch (err) {
       updateMessage(err.message)
     }
   }
 
-  const { fullName, occupation, state, email, password, passwordConf } = formData
+  const { name, email} = formData
   
   const isFormInvalid = () => {
-    return !(fullName && occupation && state && email && password && password === passwordConf)
+    return !(name && email)
   }
 
 
@@ -68,34 +61,15 @@ const Register = () => {
       className={styles.container}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="fullName" className={styles.label}>Full Name</label>
+        <label htmlFor="name" className={styles.label}>Full Name</label>
         <br />
         <input
           type="text"
           autoComplete="off"
-          id="fullName"
-          value={fullName}
-          name="fullName"
+          id="name"
+          value={name}
+          name="name"
           onChange={handleChange} />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="occupation" className={styles.label}>Occupation</label>
-        <br />
-        <input
-          type="text"
-          autoComplete="off"
-          id="occupation"
-          value={occupation}
-          name="occupation"
-          onChange={handleChange} />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="state">State</label>
-        <br />
-        <select name="state" id="state" value={state} onChange={handleChange}>
-          <option value="IL">Illinois</option>
-          <option value="IN">Indiana</option>
-        </select>
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="email" className={styles.label}>Email</label>
@@ -106,30 +80,6 @@ const Register = () => {
           id="email"
           value={email}
           name="email"
-          onChange={handleChange} />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
-        <br />
-        <input
-          type="password"
-          autoComplete="off"
-          id="password"
-          value={password}
-          name="password"
-          onChange={handleChange} />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="confirm" className={styles.label}>
-          Confirm Password
-        </label>
-        <br />
-        <input
-          type="password"
-          autoComplete="off"
-          id="confirm"
-          value={passwordConf}
-          name="passwordConf"
           onChange={handleChange} />
       </div>
       <div className={styles.inputContainer}>
