@@ -15,7 +15,7 @@ async function signup(data) {
     })
     console.log(response)
 
-    if (response) {
+    if (response.ok) {
       console.log('Login successful')
     } else {
       console.log('Login failed')
