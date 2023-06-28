@@ -40,9 +40,13 @@ const Register = () => {
 
   
   const handleSubmit = async e => {
+    let data = {
+      'name': formData.fullName,
+      'email': formData.email
+    }
     e.preventDefault()
     try {
-      await authService.signup(formData)
+      await authService.signup(data)
     } catch (err) {
       updateMessage(err.message)
     }

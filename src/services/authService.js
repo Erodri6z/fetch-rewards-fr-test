@@ -4,13 +4,22 @@ const BASE_URL = `https://frontend-take-home-service.fetch.com`
 
 async function signup(data) {
   try {
-    const res = fetch(`${BASE_URL}/auth/login`, {
+    const response = await fetch(`${BASE_URL}/auth/login`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-      credentials: 'include'
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify(data)
     })
-    return await res.json(data)
+
+    if (response.ok) {
+      console.log('Login successful')
+      return await response.json()
+    } else {
+      console.log('Login failed')
+      throw new Error('Failed to login')
+    }
   } catch (err) {
     throw err
   }
