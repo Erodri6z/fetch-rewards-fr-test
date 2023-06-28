@@ -1,5 +1,9 @@
+// import { useState } from "react"
+
 // import * as tokenService from './tokenService'
 const BASE_URL = `https://frontend-take-home-service.fetch.com`
+
+
 
 
 async function signup(data) {
@@ -17,9 +21,11 @@ async function signup(data) {
 
     if (response.ok) {
       console.log('Login successful')
+      // setLoggedIn(true)
+      // console.log(isLoggedIn)
     } else {
       console.log('Login failed')
-      throw new Error('Failed to login')
+      throw new Error('Please ensure your information is correct')
     }
   } catch (err) {
   
@@ -28,4 +34,24 @@ async function signup(data) {
   }
 }
 
-export {signup}
+async function logout() {
+  try {
+    const res = await fetch(`${BASE_URL}/auth/logout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Set-Cookie': 'SameSite=None'
+      },
+      credentials: 'include',
+    })
+    if (res.ok) {
+      // console.log(isLoggedIn)
+      console.log("logout successfull")
+      // setLoggedIn(true)
+    }
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export {signup, logout}

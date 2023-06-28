@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from './Register.module.css'
 import * as authService from '../../services/authService'
 
-const Register = () => {
+const Register = (props) => {
   // const navigate = useNavigate()
   const [message, setMessage] = useState([''])
   const [formData, setFormData] = useState({
@@ -40,6 +40,7 @@ const Register = () => {
     e.preventDefault()
     try {
       await authService.signup(formData)
+      props.completeLogin()
     } catch (err) {
       updateMessage(err.message)
     }
@@ -55,6 +56,7 @@ const Register = () => {
   return (
     <>
     <p>{message}</p>
+    {/* <p>{`${authService.isLoggedIn}`}</p> */}
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
