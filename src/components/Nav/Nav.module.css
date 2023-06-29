@@ -1,0 +1,16 @@
+.logout {
+  list-style: none;
+  position: relative;
+}
+
+.nav{
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  background-color: aquamarine;
+  left: 0px;
+}
+
+.btn{
+  display: flex;
+}

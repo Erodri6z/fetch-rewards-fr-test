@@ -2,6 +2,7 @@
 import { useState } from "react"
 import Register from "../../components/Login/Register"
 import { logout } from "../../services/authService"
+import Nav from "../../components/Nav/Nav"
 
 
 const Landing = () => {
@@ -18,7 +19,8 @@ const Landing = () => {
 
   return(
     isLoggedIn?
-    <><h1>you are logged in</h1>
+    <>
+    <h1>you are logged in</h1>
     <p>{`${isLoggedIn}`}</p>
     <button onClick={completeLogout}>logout</button>
     </>

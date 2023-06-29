@@ -1,9 +1,11 @@
+import styles from './Nav.module.css'
+
 const Nav = () => {
   return (
-    <nav>
-      <ul>
+    <nav className={styles.nav}>
+      <ul className={styles.logout}>
         <li>
-          <button>Log Out</button>
+          <button className={styles.btn}>Log Out</button>
         </li>
       </ul>
     </nav>
