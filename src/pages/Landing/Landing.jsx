@@ -20,9 +20,10 @@ const Landing = () => {
   return(
     isLoggedIn?
     <>
+    <Nav />
     <h1>you are logged in</h1>
     <p>{`${isLoggedIn}`}</p>
-    <button onClick={completeLogout}>logout</button>
+    {/* <button onClick={completeLogout}>logout</button> */}
     </>
     :
     <>

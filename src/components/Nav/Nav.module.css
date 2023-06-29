@@ -1,9 +1,16 @@
 .logout {
   list-style: none;
   position: relative;
+  margin-right: 20px;
+}
+.title {
+  font-weight: 400;
+  margin-left: 20px;
 }
 
 .nav{
+  display: flex;
+  justify-content: space-between;
   position: absolute;
   top: 0px;
   width: 100%;
