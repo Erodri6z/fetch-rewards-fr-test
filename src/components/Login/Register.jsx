@@ -56,7 +56,6 @@ const Register = (props) => {
   return (
     <>
     <p>{message}</p>
-    {/* <p>{`${authService.isLoggedIn}`}</p> */}
     <form
       autoComplete="off"
       onSubmit={handleSubmit}

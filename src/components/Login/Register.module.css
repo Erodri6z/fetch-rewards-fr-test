@@ -2,6 +2,12 @@ input{
   font-family: 'Source Code Pro', monospace;
 }
 
+.container{
+  border: 2px solid blue;
+  border-radius: 23px;
+  padding: 33px;
+
+}
 .button:disabled  {
   background-color: rgb(0, 0, 0);
   border: 1px solid rgb(255, 6, 6);
