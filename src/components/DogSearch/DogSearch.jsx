@@ -23,7 +23,11 @@ const DogsSearch = () => {
           {breeds.map(b => 
             <option value="b">{b}</option>
           )}
-
+        </select>
+        <label>What is your zipcode</label>
+        <label htmlFor="location">Zipcode</label>
+        <select name="location" id="location">
+          <option value="">Please Select Your Zipcode</option>
         </select>
       </form>
     </div>
