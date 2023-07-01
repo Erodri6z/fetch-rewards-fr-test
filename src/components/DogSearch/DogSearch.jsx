@@ -11,6 +11,7 @@ const DogsSearch = () => {
     fetchAllBreeds()
   }, [])
   
+  
   return (
     <>
     <div>
