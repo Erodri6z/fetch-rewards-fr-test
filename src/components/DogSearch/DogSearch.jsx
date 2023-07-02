@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import * as dogService from '../../services/dogService'
+import styles from './DogsSearch.module.css'
 
 const DogsSearch = () => {
   const [breeds, setBreeds] = useState([])
+
   useEffect(() => {
     const fetchAllBreeds = async () => {
       const dogBreeds = await dogService.getBreeds()
@@ -10,6 +12,7 @@ const DogsSearch = () => {
     }
     fetchAllBreeds()
   }, [])
+  
   
   
   return (
@@ -25,12 +28,11 @@ const DogsSearch = () => {
             <option value="b">{b}</option>
           )}
         </select>
-        <label>What is your zipcode</label>
+        <br />
         <label htmlFor="location">Zipcode</label>
-        <select name="location" id="location">
-          <option value="">Please Select Your Zipcode</option>
-        </select>
+        <input type="number" inputMode="numeric" id={styles.zipcode} pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"/>
       </form>
+      <button></button>
     </div>
     </>
   )
