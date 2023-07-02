@@ -4,6 +4,10 @@ import styles from './DogsSearch.module.css'
 
 const DogsSearch = () => {
   const [breeds, setBreeds] = useState([])
+  const [searchParams, setSearchParams] = useState({
+    zipcode: '',
+    breeds: ''
+  })
 
   useEffect(() => {
     const fetchAllBreeds = async () => {
@@ -13,7 +17,12 @@ const DogsSearch = () => {
     fetchAllBreeds()
   }, [])
   
-  
+  const handleChange = e => {
+    setSearchParams({
+      ...searchParams,
+      [e.target.name]: e.target.value,
+    })
+  }
   
   return (
     <>
