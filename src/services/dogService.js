@@ -20,6 +20,7 @@ async function getLocations(zipcode) {
     credentials: 'include',
     body: JSON.stringify(zipcode)
   })
+  // console.log(res.json())
   return await res.json()
 }
 

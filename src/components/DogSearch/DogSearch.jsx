@@ -5,9 +5,10 @@ import styles from './DogsSearch.module.css'
 
 const DogsSearch = () => {
   const [breeds, setBreeds] = useState([])
+  const [location, setLocation] = useState({})
   const [searchParams, setSearchParams] = useState({
     zipCode: '',
-    breeds: ''
+    breed: ''
   })
   const locationData = [parseInt(searchParams.zipCode.substring(0, 5))]
 
@@ -29,7 +30,8 @@ const DogsSearch = () => {
   const handleSearch = async e => {
     e.preventDefault()
     try {
-      await dogService.getLocations(locationData)
+      setLocation( await dogService.getLocations(locationData))
+      
 
     }catch (err){
       console.log(err)
@@ -37,7 +39,7 @@ const DogsSearch = () => {
   }
 
 
-  console.log(locationData)
+  // console.log(location[0].city)
 
 
 
@@ -46,16 +48,16 @@ const DogsSearch = () => {
     <div>
       <form onSubmit={handleSearch}>
         <label>Select a Breed</label>
-        <select name="breeds" 
+        <select name="breed" 
         id="breed" 
-        value={breeds} 
+        value={searchParams.breed} 
         onChange={handleChange}
         >
           <option value="">
             Select a breed
           </option>
           {breeds.map(b => 
-            <option value={b}>{b}</option>
+            <option value={b} key={b}>{b}</option>
           )}
         </select>
         <br />
@@ -66,7 +68,7 @@ const DogsSearch = () => {
         </label>
         <input 
         type="number" 
-        // value={zipCode} 
+        value={searchParams.zipCode} 
         name="zipCode" 
         inputMode="numeric" 
         id={styles.zipcode} 
@@ -76,6 +78,7 @@ const DogsSearch = () => {
         <button type="submit">Search</button>
       </form>
     </div>
+    {/* <h3>looking for {location[0].state}, {location[0].city}</h3> */}
     </>
   )
 }
