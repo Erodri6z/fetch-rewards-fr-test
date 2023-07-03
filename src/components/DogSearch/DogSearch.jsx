@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import * as dogService from '../../services/dogService'
 import styles from './DogsSearch.module.css'
+import DogCard from "../DogCards/DogCards"
 // import { Await } from "react-router-dom"
 
 const DogsSearch = () => {
@@ -53,6 +54,10 @@ const DogsSearch = () => {
     setNext((await dogService.getNextPage(next)).next)
   }
 
+  // const handleDogDetails = async () => {
+  //   setDogs()
+  // }
+
 
   // console.log((dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).resultIds)
 
@@ -93,10 +98,10 @@ const DogsSearch = () => {
         <button type="submit">Search</button>
       </form>
     </div>
-    <div className={styles.dogs}>
+    <div>
     {dogs?.length?
     dogs.map(d => 
-      <p key={d}>{d}</p>
+      <DogCard d={d} key={d}/>
     )
     :
     <span></span>

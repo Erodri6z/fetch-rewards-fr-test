@@ -64,6 +64,20 @@ async function getNextPage(next) {
   return await res.json()
 }
 
+async function getDetails(dogs) {
+  const res = await fetch(`${BASE_URL}/dogs`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Set-Cookie': 'SameSite=None'
+    },
+    credentials: 'include',
+    body: JSON.stringify(dogs)
+  })
+  // console.log(res.json())
+  return await res.json()
+}
+
 export {
   getBreeds,
   getLocations,

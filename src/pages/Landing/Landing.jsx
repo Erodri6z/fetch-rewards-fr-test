@@ -9,7 +9,7 @@ import DogsSearch from "../../components/DogSearch/DogSearch"
 
 const Landing = () => {
   const [isLoggedIn, setLoggedIn] = useState(false)
-  const [dogs, setDogs] = useState({})
+  // const [dogs, setDogs] = useState({})
 
   const completeLogout = () => {
     setLoggedIn(false)
@@ -27,7 +27,7 @@ const Landing = () => {
     isLoggedIn?
     <>
     <Nav />
-    <DogsSearch dogs={dogs}/>
+    <DogsSearch />
     <p>{`${isLoggedIn}`}</p>
     {/* <button onClick={completeLogout}>logout</button> */}
     </>
