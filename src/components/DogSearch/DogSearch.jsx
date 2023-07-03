@@ -50,6 +50,7 @@ const DogsSearch = () => {
 
   const handleNextPage = async () => {
     setDogs((await dogService.getNextPage(next)).resultIds)
+    setNext((await dogService.getNextPage(next)).next)
   }
 
 
