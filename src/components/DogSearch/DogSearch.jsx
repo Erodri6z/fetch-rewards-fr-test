@@ -20,7 +20,7 @@ const DogsSearch = () => {
     fetchAllBreeds()
   }, [])
   
-  const handleChange = e => {
+  const handleChange = async e => {
     setSearchParams({
       ...searchParams,
       [e.target.name]: e.target.value,
@@ -30,7 +30,8 @@ const DogsSearch = () => {
   const handleSearch = async e => {
     e.preventDefault()
     try {
-      setLocation( await dogService.getLocations(locationData))
+      // setLocation( await dogService.getLocations(locationData))
+      return await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)
       
 
     }catch (err){
@@ -69,7 +70,7 @@ const DogsSearch = () => {
         <input 
         type="number" 
         value={searchParams.zipCode} 
-        name="zipCode" 
+        name="zipCode"
         inputMode="numeric" 
         id={styles.zipcode} 
         pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$" 

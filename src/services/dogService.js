@@ -27,24 +27,25 @@ async function getLocations(zipcode) {
 async function getDogs(zipCode, breed) {
   let url = `${BASE_URL}/dogs/search`
 
-  if (zipCodes) {
+  if (zipCode) {
     url += `?zipCodes=${zipCode}`;
   }
 
-  if (breeds) {
-    if (zipCodes) {
+  if (breed) {
+    if (zipCode) {
       url += `&breeds=${breed}`;
     } else {
       url += `?breeds=${breed}`;
     }
   }
+  
   const res = await fetch(url, {
     headers: {
       'Content-Type': 'application/json',
       'Set-Cookie': 'SameSite=None'
     },
     credentials: 'include',
-    body: JSON.stringify(searchParams)
+    // body: JSON.stringify(searchParams)
   })
   return await res.json()
 }
