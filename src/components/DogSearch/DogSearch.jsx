@@ -5,7 +5,7 @@ import styles from './DogsSearch.module.css'
 const DogsSearch = () => {
   const [breeds, setBreeds] = useState([])
   const [searchParams, setSearchParams] = useState({
-    zipcode: '',
+    zipCode: '',
     breeds: ''
   })
 
@@ -24,24 +24,50 @@ const DogsSearch = () => {
     })
   }
   
+  const handleSearch = async e => {
+    e.preventDefault()
+    try {
+      console.log(searchParams)
+
+    }catch (err){
+      console.log(err)
+    }
+  }
+
   return (
     <>
     <div>
-      <form>
+      <form onSubmit={handleSearch}>
         <label>Select a Breed</label>
-        <select name="breed" id="breed">
+        <select name="breeds" 
+        id="breed" 
+        value={breeds} 
+        onChange={handleChange}
+        >
           <option value="">
             Select a breed
           </option>
           {breeds.map(b => 
-            <option value="b">{b}</option>
+            <option value={b}>{b}</option>
           )}
         </select>
         <br />
-        <label htmlFor="location">Zipcode</label>
-        <input type="number" inputMode="numeric" id={styles.zipcode} pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"/>
+        <label 
+        htmlFor="location"
+        >
+          Zipcode
+        </label>
+        <input 
+        type="number" 
+        // value={zipCode} 
+        name="zipCode" 
+        inputMode="numeric" 
+        id={styles.zipcode} 
+        pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$" 
+        onChange={handleChange}
+        />
+        <button type="submit"></button>
       </form>
-      <button></button>
     </div>
     </>
   )
