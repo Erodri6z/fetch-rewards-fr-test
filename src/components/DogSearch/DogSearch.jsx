@@ -49,6 +49,7 @@ const DogsSearch = () => {
   }
 
   const handleNextPage = async () => {
+    setDogs((await dogService.getNextPage(next)).resultIds)
   }
 
 
@@ -99,7 +100,7 @@ const DogsSearch = () => {
     :
     <span></span>
   } */}
-  <button>Next</button>
+  <button onClick={handleNextPage}>Next</button>
     </>
   )
 }
