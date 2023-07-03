@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import * as dogService from '../../services/dogService'
 import styles from './DogsSearch.module.css'
-import DogCard from "../DogCards/DogCards"
+// import DogCard from "../DogCards/DogCards"
 // import { Await } from "react-router-dom"
 
 const DogsSearch = () => {
   const [breeds, setBreeds] = useState([])
   const [next, setNext] = useState({})
-  const [dogs, setDogs] = useState({})
+  const [dogs, setDogs] = useState([])
   const [searchParams, setSearchParams] = useState({
     zipCode: '',
     breed: ''
@@ -23,14 +23,24 @@ const DogsSearch = () => {
     fetchAllBreeds()
   }, [])
 
+
   useEffect(() => {
     const fetchDogs = async () => {
       const doggos = await dogService.getDogs()
-      setDogs(doggos)
+      setDogs(await dogService.getDetails(doggos.resultIds))
+      // console.log('useEffect')
+      // setDogs(doggos)
     }
     fetchDogs()
   }, [])
   
+  // useEffect(() => {
+  //   const fetchDetails = async () => {
+  //     const details = await dogService.getDetails(dogs)
+  //     setDogs(details)
+  //   }
+  //   fetchDetails()
+  // }, [])
   const handleChange = async e => {
     setSearchParams({
       ...searchParams,
@@ -48,23 +58,30 @@ const DogsSearch = () => {
       console.log(err)
     }
   }
-
+  
   const handleNextPage = async () => {
     setDogs((await dogService.getNextPage(next)).resultIds)
     setNext((await dogService.getNextPage(next)).next)
   }
-
+  
   // const handleDogDetails = async () => {
-  //   setDogs()
-  // }
+    //   setDogs( await dogService.getDetails(dogs))
+    //   .then(
+      //     console.log(dogs) 
+      //   )
+      // }
+      
+      
 
-
-  // console.log((dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).resultIds)
-
-
-
-  return (
-    <>
+      
+      // console.log((dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).resultIds)
+      
+      
+      // console.log(dogService.getDetails(dogs))
+      console.log(dogService.getDetails(dogs))
+      
+      return (
+        <>
     <div>
       <form onSubmit={handleSearch}>
         <label>Select a Breed</label>
@@ -98,16 +115,17 @@ const DogsSearch = () => {
         <button type="submit">Search</button>
       </form>
     </div>
-    <div>
+    {/* <div>
     {dogs?.length?
     dogs.map(d => 
-      <DogCard d={d} key={d}/>
+      // <DogCard d={d} key={d}/>
+      <p key={d}>{d}</p>
     )
     :
     <span></span>
     }
     <button onClick={handleNextPage}>Next</button>
-    </div>
+    </div> */}
     {/* <h3>looking for {location[0].state}, {location[0].city}</h3> */}
     </>
   )

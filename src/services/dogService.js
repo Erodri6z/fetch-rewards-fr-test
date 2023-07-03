@@ -74,13 +74,14 @@ async function getDetails(dogs) {
     credentials: 'include',
     body: JSON.stringify(dogs)
   })
-  // console.log(res.json())
-  return await res.json()
+  // console.log(await res.json())
+  return res.json()
 }
 
 export {
   getBreeds,
   getLocations,
   getDogs,
-  getNextPage
+  getNextPage,
+  getDetails
 }
