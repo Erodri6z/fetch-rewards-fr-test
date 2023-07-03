@@ -6,10 +6,12 @@ import styles from './DogsSearch.module.css'
 const DogsSearch = () => {
   const [breeds, setBreeds] = useState([])
   const [location, setLocation] = useState({})
+  const [dogs, setDogs] = useState({})
   const [searchParams, setSearchParams] = useState({
     zipCode: '',
     breed: ''
   })
+  
   const locationData = [parseInt(searchParams.zipCode.substring(0, 5))]
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const DogsSearch = () => {
     e.preventDefault()
     try {
       // setLocation( await dogService.getLocations(locationData))
-      return await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)
+      setDogs(await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed))
       
 
     }catch (err){
