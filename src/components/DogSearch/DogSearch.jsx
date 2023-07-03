@@ -21,6 +21,14 @@ const DogsSearch = () => {
     }
     fetchAllBreeds()
   }, [])
+
+  useEffect(() => {
+    const fetchDogs = async () => {
+      const doggos = await dogService.getDogs()
+      setDogs(doggos)
+    }
+    fetchDogs()
+  }, [])
   
   const handleChange = async e => {
     setSearchParams({
@@ -33,7 +41,7 @@ const DogsSearch = () => {
     e.preventDefault()
     try {
       // setLocation( await dogService.getLocations(locationData))
-      setDogs(await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed))
+      setDogs((await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).resultIds)
       
 
     }catch (err){
@@ -82,6 +90,13 @@ const DogsSearch = () => {
       </form>
     </div>
     {/* <h3>looking for {location[0].state}, {location[0].city}</h3> */}
+    {dogs?.length?
+    dogs.map(d => 
+      <p key={d}>{d}</p>
+    )
+    :
+    <span></span>
+    }
     </>
   )
 }
