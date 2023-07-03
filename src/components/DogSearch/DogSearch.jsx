@@ -28,19 +28,10 @@ const DogsSearch = () => {
     const fetchDogs = async () => {
       const doggos = await dogService.getDogs()
       setDogs(await dogService.getDetails(doggos.resultIds))
-      // console.log('useEffect')
-      // setDogs(doggos)
     }
     fetchDogs()
   }, [])
   
-  // useEffect(() => {
-  //   const fetchDetails = async () => {
-  //     const details = await dogService.getDetails(dogs)
-  //     setDogs(details)
-  //   }
-  //   fetchDetails()
-  // }, [])
   const handleChange = async e => {
     setSearchParams({
       ...searchParams,
@@ -51,8 +42,7 @@ const DogsSearch = () => {
   const handleSearch = async e => {
     e.preventDefault()
     try {
-      // setLocation( await dogService.getLocations(locationData))
-      setDogs((await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).resultIds)
+      setDogs(await dogService.getDetails((await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).resultIds))
       setNext((await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).next)
     }catch (err){
       console.log(err)
@@ -64,21 +54,7 @@ const DogsSearch = () => {
     setNext((await dogService.getNextPage(next)).next)
   }
   
-  // const handleDogDetails = async () => {
-    //   setDogs( await dogService.getDetails(dogs))
-    //   .then(
-      //     console.log(dogs) 
-      //   )
-      // }
-      
-      
-
-      
-      // console.log((dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).resultIds)
-      
-      
-      // console.log(dogService.getDetails(dogs))
-      console.log(dogService.getDetails(dogs))
+  console.log(dogService.getDetails(dogs))
       
       return (
         <>
