@@ -10,15 +10,17 @@ async function getBreeds() {
   return await res.json()
 }
 
-async function getLocations() {
-  const res = await fetch(`${BASE_URL}/locations/search`, {
+async function getLocations(zipcode) {
+  const res = await fetch(`${BASE_URL}/locations`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
+      'Set-Cookie': 'SameSite=None'
     },
-    credentials: 'include'
+    credentials: 'include',
+    body: JSON.stringify(zipcode)
   })
-  console.log(res.json())
+  return await res.json()
 }
 
 export {

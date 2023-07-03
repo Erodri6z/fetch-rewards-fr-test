@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import * as dogService from '../../services/dogService'
 import styles from './DogsSearch.module.css'
+// import { Await } from "react-router-dom"
 
 const DogsSearch = () => {
   const [breeds, setBreeds] = useState([])
@@ -8,6 +9,7 @@ const DogsSearch = () => {
     zipCode: '',
     breeds: ''
   })
+  const locationData = [parseInt(searchParams.zipCode.substring(0, 5))]
 
   useEffect(() => {
     const fetchAllBreeds = async () => {
@@ -27,12 +29,17 @@ const DogsSearch = () => {
   const handleSearch = async e => {
     e.preventDefault()
     try {
-      console.log(searchParams)
+      await dogService.getLocations(locationData)
 
     }catch (err){
       console.log(err)
     }
   }
+
+
+  console.log(locationData)
+
+
 
   return (
     <>
@@ -66,7 +73,7 @@ const DogsSearch = () => {
         pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$" 
         onChange={handleChange}
         />
-        <button type="submit"></button>
+        <button type="submit">Search</button>
       </form>
     </div>
     </>
