@@ -5,7 +5,7 @@ import styles from './DogsSearch.module.css'
 
 const DogsSearch = () => {
   const [breeds, setBreeds] = useState([])
-  const [location, setLocation] = useState({})
+  const [next, setNext] = useState({})
   const [dogs, setDogs] = useState({})
   const [searchParams, setSearchParams] = useState({
     zipCode: '',
@@ -42,15 +42,17 @@ const DogsSearch = () => {
     try {
       // setLocation( await dogService.getLocations(locationData))
       setDogs((await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).resultIds)
-      
-
+      setNext((await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).next)
     }catch (err){
       console.log(err)
     }
   }
 
+  const handleNextPage = async () => {
+  }
 
-  // console.log(location[0].city)
+
+  // console.log((dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).resultIds)
 
 
 
@@ -90,13 +92,14 @@ const DogsSearch = () => {
       </form>
     </div>
     {/* <h3>looking for {location[0].state}, {location[0].city}</h3> */}
-    {dogs?.length?
+    {/* {dogs?.length?
     dogs.map(d => 
       <p key={d}>{d}</p>
     )
     :
     <span></span>
-    }
+  } */}
+  <button>Next</button>
     </>
   )
 }

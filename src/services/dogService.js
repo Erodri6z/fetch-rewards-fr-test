@@ -24,7 +24,7 @@ async function getLocations(zipcode) {
   return await res.json()
 }
 
-async function getDogs(zipCode, breed) {
+async function getDogs(zipCode, breed ) {
   let url = `${BASE_URL}/dogs/search`
 
   if (zipCode) {
@@ -38,8 +38,22 @@ async function getDogs(zipCode, breed) {
       url += `?breeds=${breed}`;
     }
   }
-  
+
+
+
   const res = await fetch(url, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Set-Cookie': 'SameSite=None'
+    },
+    credentials: 'include',
+    // body: JSON.stringify(searchParams)
+  })
+  return await res.json()
+}
+
+async function getNextPage(next) {
+  const res = await fetch(`${BASE_URL}${next}`, {
     headers: {
       'Content-Type': 'application/json',
       'Set-Cookie': 'SameSite=None'
@@ -53,5 +67,6 @@ async function getDogs(zipCode, breed) {
 export {
   getBreeds,
   getLocations,
-  getDogs
+  getDogs,
+  getNextPage
 }
