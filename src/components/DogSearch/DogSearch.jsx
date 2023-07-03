@@ -93,15 +93,17 @@ const DogsSearch = () => {
         <button type="submit">Search</button>
       </form>
     </div>
-    {/* <h3>looking for {location[0].state}, {location[0].city}</h3> */}
-    {/* {dogs?.length?
+    <div className={styles.dogs}>
+    {dogs?.length?
     dogs.map(d => 
       <p key={d}>{d}</p>
     )
     :
     <span></span>
-  } */}
-  <button onClick={handleNextPage}>Next</button>
+    }
+    <button onClick={handleNextPage}>Next</button>
+    </div>
+    {/* <h3>looking for {location[0].state}, {location[0].city}</h3> */}
     </>
   )
 }
