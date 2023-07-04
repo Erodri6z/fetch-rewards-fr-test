@@ -3,3 +3,10 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.dogContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 50vmin);
+  grid-gap: 20px;
+  justify-content: space-around;
+}

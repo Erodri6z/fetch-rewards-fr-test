@@ -92,7 +92,7 @@ const DogsSearch = () => {
         <button type="submit">Search</button>
       </form>
     </div>
-    <div>
+    <div className={styles.dogContainer}>
     {dogs.length?
     dogs.map(d => 
       <DogCard d={d} key={d.id}/>
