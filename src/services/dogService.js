@@ -47,7 +47,6 @@ async function getDogs(zipCode, breed ) {
       'Set-Cookie': 'SameSite=None'
     },
     credentials: 'include',
-    // body: JSON.stringify(searchParams)
   })
   const dogs = await res.json()
   const dogDetails = fetch(`${BASE_URL}/dogs`,  {
@@ -69,8 +68,6 @@ async function getDogs(zipCode, breed ) {
   return results
 }
 
-// async function getNext
-
 async function getNextPage(next) {
   const res = await fetch(`${BASE_URL}${next}`, {
     headers: {
@@ -78,9 +75,7 @@ async function getNextPage(next) {
       'Set-Cookie': 'SameSite=None'
     },
     credentials: 'include',
-    // body: JSON.stringify(searchParams)
   })
-  // console.log(await res.json())
   let dogs = await res.json()
   const dogDetails = await fetch(`${BASE_URL}/dogs`,{
     method: "POST",
