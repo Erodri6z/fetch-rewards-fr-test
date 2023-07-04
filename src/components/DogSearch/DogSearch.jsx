@@ -28,6 +28,7 @@ const DogsSearch = () => {
     const fetchDogs = async () => {
       const doggos = await dogService.getDogs()
       setDogs(doggos.dogDetails)
+      setNext(doggos.next)
     }
     fetchDogs()
   }, [])
@@ -50,7 +51,7 @@ const DogsSearch = () => {
   }
   
   const handleNextPage = async () => {
-    setDogs((await dogService.getNextPage(next)).resultIds)
+    setDogs((await dogService.getNextPage(next)).dogDetails)
     setNext((await dogService.getNextPage(next)).next)
   }
   
@@ -91,8 +92,8 @@ const DogsSearch = () => {
         <button type="submit">Search</button>
       </form>
     </div>
-    {/* <div>
-    {dogs?.length?
+    <div>
+    {dogs.length?
     dogs.map(d => 
       <DogCard d={d} key={d.id}/>
     )
@@ -100,7 +101,7 @@ const DogsSearch = () => {
     <span></span>
     }
     <button onClick={handleNextPage}>Next</button>
-    </div> */}
+    </div>
     {/* <h3>looking for {location[0].state}, {location[0].city}</h3> */}
     </>
   )
