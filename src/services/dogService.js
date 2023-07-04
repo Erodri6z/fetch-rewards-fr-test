@@ -59,11 +59,13 @@ async function getDogs(zipCode, breed ) {
     credentials: 'include',
     body: JSON.stringify(dogs.resultIds)
   })
+  let dogDetailArr = (await dogDetails).json()
+
   let results = {
-    dogDetails : (await dogDetails).json(), 
+    dogDetails :  await dogDetailArr, 
     next : dogs.next
   }
-  // console.log(results)
+  // console.log(await results.dogDetails)
   return results
 }
 
