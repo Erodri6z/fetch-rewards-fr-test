@@ -50,7 +50,6 @@ async function getDogs(zipCode, breed ) {
     // body: JSON.stringify(searchParams)
   })
   const dogs = await res.json()
-  console.log(dogs.resultIds)
   const dogDetails = fetch(`${BASE_URL}/dogs`,  {
     method: "POST",
     headers: {
@@ -60,10 +59,15 @@ async function getDogs(zipCode, breed ) {
     credentials: 'include',
     body: JSON.stringify(dogs.resultIds)
   })
-  let results = (await dogDetails).json()
-  console.log(results)
-
+  let results = {
+    dogDetails : (await dogDetails).json(), 
+    next : dogs.next
+  }
+  // console.log(results)
+  return results
 }
+
+// async function getNext
 
 async function getNextPage(next) {
   const res = await fetch(`${BASE_URL}${next}`, {
@@ -77,24 +81,24 @@ async function getNextPage(next) {
   return await res.json()
 }
 
-async function getDetails(dogs) {
-  const res = await fetch(`${BASE_URL}/dogs`, {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'Set-Cookie': 'SameSite=None'
-    },
-    credentials: 'include',
-    body: JSON.stringify(dogs)
-  })
-  // console.log(await res.json())
-  return res.json()
-}
+// async function getDetails(dogs) {
+//   const res = await fetch(`${BASE_URL}/dogs`, {
+//     method: "POST",
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Set-Cookie': 'SameSite=None'
+//     },
+//     credentials: 'include',
+//     body: JSON.stringify(dogs)
+//   })
+//   // console.log(await res.json())
+//   return res.json()
+// }
 
 export {
   getBreeds,
   getLocations,
   getDogs,
-  getNextPage,
-  getDetails
+  getNextPage
+  // getDetails
 }

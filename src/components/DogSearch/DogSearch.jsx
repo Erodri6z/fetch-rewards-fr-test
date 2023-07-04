@@ -27,7 +27,7 @@ const DogsSearch = () => {
   useEffect(() => {
     const fetchDogs = async () => {
       const doggos = await dogService.getDogs()
-      setDogs(await dogService.getDetails(doggos.resultIds))
+      setDogs(doggos)
     }
     fetchDogs()
   }, [])
@@ -54,7 +54,7 @@ const DogsSearch = () => {
     setNext((await dogService.getNextPage(next)).next)
   }
   
-  console.log(dogService.getDetails(dogs))
+  // console.log(dogService.getDetails(dogs))
       
       return (
         <>
