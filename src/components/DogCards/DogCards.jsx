@@ -1,4 +1,4 @@
-import '' from './DogCards.css'
+import './DogCards.css'
 
 const DogCard = (props) => {
 

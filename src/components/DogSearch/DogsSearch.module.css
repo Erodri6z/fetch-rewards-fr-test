@@ -10,3 +10,9 @@ input::-webkit-inner-spin-button {
   grid-gap: 20px;
   justify-content: space-around;
 }
+
+.searchForm{
+  margin-top: 50px;
+  display: flex;
+  justify-items: space-between;
+}

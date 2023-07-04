@@ -59,7 +59,7 @@ const DogsSearch = () => {
       
       return (
         <>
-    <div>
+    <div className={styles.searchForm}>
       <form onSubmit={handleSearch}>
         <label>Select a Breed</label>
         <select name="breed" 
@@ -74,7 +74,7 @@ const DogsSearch = () => {
             <option value={b} key={b}>{b}</option>
           )}
         </select>
-        <br />
+        {/* <br /> */}
         <label 
         htmlFor="location"
         >
