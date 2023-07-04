@@ -1,0 +1,5 @@
+.card-img-top {
+  object-fit: cover;
+  width: auto; 
+  max-height: 150px; 
+}
