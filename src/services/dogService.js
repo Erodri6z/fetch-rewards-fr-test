@@ -80,8 +80,26 @@ async function getNextPage(next) {
     credentials: 'include',
     // body: JSON.stringify(searchParams)
   })
-  return await res.json()
+  // console.log(await res.json())
+  let dogs = await res.json()
+  const dogDetails = await fetch(`${BASE_URL}/dogs`,{
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Set-Cookie': 'SameSite=None'
+    },
+    credentials: 'include',
+    body: JSON.stringify(dogs.resultIds)
+  })
+  let dogDetailArr = (await dogDetails).json()
+  let results = {
+    dogDetails :  await dogDetailArr, 
+    next : dogs.next
+  }
+  return results
 }
+
+  // return await res.json()
 
 // async function getDetails(dogs) {
 //   const res = await fetch(`${BASE_URL}/dogs`, {
