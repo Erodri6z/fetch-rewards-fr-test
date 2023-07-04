@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import * as dogService from '../../services/dogService'
 import styles from './DogsSearch.module.css'
-// import DogCard from "../DogCards/DogCards"
+import DogCard from "../DogCards/DogCards"
 // import { Await } from "react-router-dom"
 
 const DogsSearch = () => {
@@ -42,7 +42,7 @@ const DogsSearch = () => {
   const handleSearch = async e => {
     e.preventDefault()
     try {
-      setDogs(await dogService.getDetails((await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).resultIds))
+      setDogs((await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)))
       setNext((await dogService.getDogs(searchParams.zipCode.substring(0, 5), searchParams.breed)).next)
     }catch (err){
       console.log(err)
@@ -94,8 +94,7 @@ const DogsSearch = () => {
     {/* <div>
     {dogs?.length?
     dogs.map(d => 
-      // <DogCard d={d} key={d}/>
-      <p key={d}>{d}</p>
+      <DogCard d={d} key={d.id}/>
     )
     :
     <span></span>

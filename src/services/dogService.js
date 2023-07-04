@@ -49,7 +49,20 @@ async function getDogs(zipCode, breed ) {
     credentials: 'include',
     // body: JSON.stringify(searchParams)
   })
-  return await res.json()
+  const dogs = await res.json()
+  console.log(dogs.resultIds)
+  const dogDetails = fetch(`${BASE_URL}/dogs`,  {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Set-Cookie': 'SameSite=None'
+    },
+    credentials: 'include',
+    body: JSON.stringify(dogs.resultIds)
+  })
+  let results = (await dogDetails).json()
+  console.log(results)
+
 }
 
 async function getNextPage(next) {
