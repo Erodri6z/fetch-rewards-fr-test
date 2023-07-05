@@ -98,9 +98,9 @@ const DogsSearch = () => {
       <DogCard d={d} key={d.id}/>
     )
     :
-    <span></span>
+    <h3>No Doggos found</h3>
     }
-    <button onClick={handleNextPage}>Next</button>
+    <button onClick={handleNextPage} className={styles.btn}>Next</button>
     </div>
     {/* <h3>looking for {location[0].state}, {location[0].city}</h3> */}
     </>

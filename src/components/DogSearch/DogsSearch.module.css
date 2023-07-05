@@ -5,6 +5,7 @@ input::-webkit-inner-spin-button {
 }
 
 .dogContainer {
+  margin-top: 100px;
   display: grid;
   grid-template-columns: repeat(2, 50vmin);
   grid-gap: 20px;
@@ -12,7 +13,13 @@ input::-webkit-inner-spin-button {
 }
 
 .searchForm{
-  margin-top: 50px;
-  display: flex;
-  justify-items: space-between;
+  border: 1px solid gray;
+  border-radius: 10px;
+  background-color: grey;
+  position: relative;
+  padding: 10px;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
 }
