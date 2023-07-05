@@ -11,6 +11,7 @@ const DogCard = (props) => {
         <div className="card-body">
         <h5 className="card-title">{dog.name}</h5>
         <p className="card-text">{dog.name} is an age {dog.age}, {dog.breed} near {dog.zip_code}</p>
+        {/* <button className='btn btn-primary'>Pick me</button> */}
         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
       </div>
     </div>

@@ -110,10 +110,37 @@ async function getNextPage(next) {
 //   return res.json()
 // }
 
+async function getMatch(dogs) {
+  const dogId = await fetch(`${BASE_URL}/dogs/match`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Set-Cookie': 'SameSite=None'
+    },
+    credentials: 'include',
+    body: JSON.stringify(dogs)
+  }) 
+  const matchedDog = dogId
+  const dogDetails = await fetch(`${BASE_URL}/dogs`,{
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Set-Cookie': 'SameSite=None'
+    },
+    credentials: 'include',
+    body: JSON.stringify(matchedDog.match)
+  })
+  let dogDetail =  dogDetails.json()
+  let results = dogDetail
+  // return results
+  console.log(results)
+}
+
 export {
   getBreeds,
   getLocations,
   getDogs,
-  getNextPage
+  getNextPage,
+  getMatch
   // getDetails
 }
