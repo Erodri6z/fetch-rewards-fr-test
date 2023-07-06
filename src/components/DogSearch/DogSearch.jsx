@@ -55,6 +55,10 @@ const DogsSearch = () => {
     const selectedDog = dogService.getMatch(pups)
     console.log(selectedDog)
   }
+
+  const chooseRandom = () => {
+    chooseDog(dogIdNumbers)
+  }
   
   const handleNextPage = async () => {
     setDogs((await dogService.getNextPage(next)).dogDetails)
@@ -62,7 +66,7 @@ const DogsSearch = () => {
   }
   
   // console.log(dogService.getDetails(dogs))
-  console.log(dogIdNumbers)
+  // console.log(dogIdNumbers)
       
       return (
         <>
@@ -108,7 +112,7 @@ const DogsSearch = () => {
     <h3>No Doggos found</h3>
     }
     </div>
-    <button onClick={chooseDog(dogIdNumbers)} >Cant Pick? We'll pick for you</button>
+    <button onClick={chooseRandom}>Cant Pick? We'll pick for you</button>
     <button onClick={handleNextPage} className={styles.btn}>Next</button>
     {/* <h3>looking for {location[0].state}, {location[0].city}</h3> */}
     </>

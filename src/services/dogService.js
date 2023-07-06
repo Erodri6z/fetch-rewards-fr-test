@@ -111,6 +111,7 @@ async function getNextPage(next) {
 // }
 
 async function getMatch(dogs) {
+  // console.log(dogs)
   const dogId = await fetch(`${BASE_URL}/dogs/match`, {
     method: "POST",
     headers: {
@@ -120,20 +121,24 @@ async function getMatch(dogs) {
     credentials: 'include',
     body: JSON.stringify(dogs)
   }) 
-  const matchedDog = dogId
-  const dogDetails = await fetch(`${BASE_URL}/dogs`,{
+  const matchedDog = await dogId.json()
+  const match = matchedDog.match
+  // console.log(match)
+
+  const dogDetails = await fetch(`${BASE_URL}/dogs`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
       'Set-Cookie': 'SameSite=None'
     },
     credentials: 'include',
-    body: JSON.stringify(matchedDog.match)
+    body: JSON.stringify([match])
   })
-  let dogDetail =  dogDetails.json()
+  // console.log(dogDetails)
+  let dogDetail = await dogDetails.json()
   let results = dogDetail
-  // return results
-  console.log(results)
+  // console.log(await results)
+  return await results
 }
 
 export {
