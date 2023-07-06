@@ -1,13 +1,15 @@
+import './ChosenDog.css'
+
 const ChosenDog = (props) => {
   const dog = props.dog
   return (
-    <div className="card" styles="max-height: 20px;">
+    <div className="card chosen-card" styles="margin: auto;">
     <img src={dog.img} className="card-img" alt={dog.img} />
       <div className="card-body">
       <h5 className="card-title">{dog.name}</h5>
-      <p className="card-text">{dog.name} is an age {dog.age}, {dog.breed} near {dog.zip_code}</p>
-      {/* <button className='btn btn-primary'>Pick me</button> */}
-      {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
+      <p className="card-text">Age : {dog.age} year(s) old</p>
+      <p className="card-text">Breed : {dog.breed}</p>
+      <p className="card-text">Location : {dog.zip_code}</p>
     </div>
   </div>
   )
