@@ -9,12 +9,23 @@ const DogsSearch = () => {
   const [breeds, setBreeds] = useState([])
   const [next, setNext] = useState({})
   const [dogs, setDogs] = useState([])
+  const [favorite, setFavorite]= useState([])
   const [searchParams, setSearchParams] = useState({
     zipCode: '',
     breed: ''
   })
   
   const locationData = [parseInt(searchParams.zipCode.substring(0, 5))]
+
+  const sortAsc = () => {
+    const sortedItems = [...dogs].sort((a, b) => a.name.localeCompare(b.name))
+    setDogs(sortedItems)
+  };
+
+  const sortDsc = () => {
+    const sortedItems = [...dogs].sort((a, b) => b.name.localeCompare(a.name))
+    setDogs(sortedItems)
+  };
   
   useEffect(() => {
     const fetchAllBreeds = async () => {
@@ -28,7 +39,7 @@ const DogsSearch = () => {
   useEffect(() => {
     const fetchDogs = async () => {
       const doggos = await dogService.getDogs()
-      setDogs(doggos.dogDetails)
+      setDogs(doggos.dogDetails.sort())
       setNext(doggos.next)
     }
     fetchDogs()
@@ -64,7 +75,10 @@ const DogsSearch = () => {
     const options = dogs.map((dog) => dog.id )
     chooseDog(options)
   }
-  
+
+  const addFavorite = (dogId) => {
+    setFavorite([...favorite, dogId])
+  }
   const handleNextPage = async () => {
     setDogs((await dogService.getNextPage(next)).dogDetails)
     setNext((await dogService.getNextPage(next)).next)
@@ -88,7 +102,7 @@ const DogsSearch = () => {
           </option>
           {breeds.map(b => 
             <option value={b} key={b}>{b}</option>
-          )}
+            )}
         </select>
         {/* <br /> */}
         <label 
@@ -107,11 +121,19 @@ const DogsSearch = () => {
         />
         <button type="submit">Search</button>
       </form>
+      <button onClick={sortAsc}>Asc</button>
+      <button onClick={sortDsc}>Dsc</button>
+    </div>
+    <div>
     </div>
     <div className={styles.dogContainer}>
     {dogs.length > 1?
     dogs.map(d => 
-      <DogCard d={d} key={d.id}/>
+      // console.log(d.id)
+      <>
+        {/* // console.log(d.id) */}
+          <DogCard d={d} />
+        </>
     )
     :
     dogs.length === 1?

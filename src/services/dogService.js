@@ -39,8 +39,6 @@ async function getDogs(zipCode, breed ) {
     }
   }
 
-
-
   const res = await fetch(url, {
     headers: {
       'Content-Type': 'application/json',
@@ -59,12 +57,11 @@ async function getDogs(zipCode, breed ) {
     body: JSON.stringify(dogs.resultIds)
   })
   let dogDetailArr = (await dogDetails).json()
-
+  
   let results = {
     dogDetails :  await dogDetailArr, 
     next : dogs.next
   }
-  // console.log(await results.dogDetails)
   return results
 }
 

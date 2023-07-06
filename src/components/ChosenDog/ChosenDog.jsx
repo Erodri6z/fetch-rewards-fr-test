@@ -1,7 +1,9 @@
 import './ChosenDog.css'
 
 const ChosenDog = (props) => {
+  
   const dog = props.dog
+
   return (
     <div className="card chosen-card" styles="margin: auto;">
     <img src={dog.img} className="card-img" alt={dog.img} />
