@@ -18,14 +18,14 @@ const DogsSearch = () => {
   // const locationData = [parseInt(searchParams.zipCode.substring(0, 5))]
 
   const sortAsc = () => {
-    const sortedItems = [...dogs].sort((a, b) => a.name.localeCompare(b.name))
+    const sortedItems = [...dogs].sort((a, b) => a.breed.localeCompare(b.breed))
     setDogs(sortedItems)
-  };
+  }
 
   const sortDsc = () => {
-    const sortedItems = [...dogs].sort((a, b) => b.name.localeCompare(a.name))
+    const sortedItems = [...dogs].sort((a, b) => b.breed.localeCompare(a.breed))
     setDogs(sortedItems)
-  };
+  }
   
   useEffect(() => {
     const fetchAllBreeds = async () => {
@@ -138,15 +138,13 @@ const DogsSearch = () => {
     </div>
     <div className={styles.dogContainer}>
     {dogs.length > 1?
-    dogs.sort((a, b) => a.name.localeCompare(b.name)).map(d => 
-      // console.log(d.id)
+    dogs.map(d => 
       <>
-        {/* // console.log(d.id) */}
-        <div>
-          <DogCard d={d} key={d.id}/>
-          <button onClick={() => addFavorite(d.id)}>Add to Favorites</button>
+        <div key={d.id}>
+          <DogCard d={d} key={d}/>
+          <button key={d.id} onClick={() => addFavorite(d.id)}>Add to Favorites</button>
         </div>
-        </>
+      </>
     )
     :
     dogs.length === 1?
