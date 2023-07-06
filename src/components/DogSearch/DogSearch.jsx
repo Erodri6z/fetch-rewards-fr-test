@@ -50,17 +50,21 @@ const DogsSearch = () => {
     }
   }
   
-  const chooseDog = (pups) => {
+  const chooseDog = async (pups) => {
     // const dogIdNumbers = pups.map((dog) => dog.id)
     // console.log(dogIdNumbers)
-    const selectedDog = dogService.getMatch(pups)
-    // console.log(selectedDog)
-    setDogs(selectedDog)
+    try{
+      let selectedDog = await dogService.getMatch(pups)
+      console.log(selectedDog)
+    }catch (err) {
+      console.log(err)
+    }
+    // setDogs(selectedDog)
   }
 
   const chooseRandom = () => {
     const options = dogs.map((dog) => dog.id )
-    console.log(options)
+    // console.log(options)
     chooseDog(options)
   }
   

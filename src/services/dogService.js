@@ -137,8 +137,8 @@ async function getMatch(dogs) {
   // console.log(dogDetails)
   let dogDetail = await dogDetails.json()
   let results = dogDetail
+  return dogDetail
   // console.log(results)
-  return await results
 }
 
 export {
