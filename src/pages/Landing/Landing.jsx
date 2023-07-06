@@ -12,8 +12,8 @@ const Landing = () => {
   // const [dogs, setDogs] = useState({})
 
   const completeLogout = () => {
-    setLoggedIn(false)
     logout()
+    setLoggedIn(false)
   }
 
   const completeLogin = () => {
@@ -26,7 +26,7 @@ const Landing = () => {
   return(
     isLoggedIn?
     <>
-    <Nav />
+    <Nav completeLogout={completeLogout}/>
     <DogsSearch />
     <p>{`${isLoggedIn}`}</p>
     {/* <button onClick={completeLogout}>logout</button> */}

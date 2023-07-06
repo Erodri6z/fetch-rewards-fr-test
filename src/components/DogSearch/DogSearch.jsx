@@ -141,7 +141,7 @@ const DogsSearch = () => {
     dogs.map(d => 
       <>
         <div key={d.id}>
-          <DogCard d={d} key={d}/>
+          <DogCard d={d} key={d.id}/>
           <button key={d.id} onClick={() => addFavorite(d.id)}>Add to Favorites</button>
         </div>
       </>
