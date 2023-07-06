@@ -116,8 +116,8 @@ const DogsSearch = () => {
     :
     dogs.length === 1?
     <>
-    {/* <h1>{dogs[0].name} is the best option for you</h1> */}
-    <ChosenDog dog={dogs[0]}/>
+      <h2>Congratulations, We think that {dogs[0].name} would make the perfect companion for you!</h2>
+      <ChosenDog dog={dogs[0]}/>
     </>
     :
     <h3>No Doggos found</h3>
