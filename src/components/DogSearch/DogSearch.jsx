@@ -51,20 +51,16 @@ const DogsSearch = () => {
   }
   
   const chooseDog = async (pups) => {
-    // const dogIdNumbers = pups.map((dog) => dog.id)
-    // console.log(dogIdNumbers)
     try{
       let selectedDog = await dogService.getMatch(pups)
-      console.log(selectedDog)
+      setDogs(selectedDog)
     }catch (err) {
       console.log(err)
     }
-    // setDogs(selectedDog)
   }
 
   const chooseRandom = () => {
     const options = dogs.map((dog) => dog.id )
-    // console.log(options)
     chooseDog(options)
   }
   
@@ -112,10 +108,13 @@ const DogsSearch = () => {
       </form>
     </div>
     <div className={styles.dogContainer}>
-    {dogs.length?
+    {dogs.length > 1?
     dogs.map(d => 
       <DogCard d={d} key={d.id}/>
     )
+    :
+    dogs.length === 1?
+    <h1>{dogs[0].name} is the best option for you</h1>
     :
     <h3>No Doggos found</h3>
     }
