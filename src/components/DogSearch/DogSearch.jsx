@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import * as dogService from '../../services/dogService'
 import styles from './DogsSearch.module.css'
 import DogCard from "../DogCards/DogCards"
+import ChosenDog from "../ChosenDog/ChosenDog"
 // import { Await } from "react-router-dom"
 
 const DogsSearch = () => {
@@ -114,7 +115,10 @@ const DogsSearch = () => {
     )
     :
     dogs.length === 1?
-    <h1>{dogs[0].name} is the best option for you</h1>
+    <>
+    {/* <h1>{dogs[0].name} is the best option for you</h1> */}
+    <ChosenDog dog={dogs[0]}/>
+    </>
     :
     <h3>No Doggos found</h3>
     }
