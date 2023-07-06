@@ -9,7 +9,7 @@ const DogsSearch = () => {
   const [breeds, setBreeds] = useState([])
   const [next, setNext] = useState({})
   const [dogs, setDogs] = useState([])
-  const [favorite, setFavorite]= useState([])
+  const [favorites, setFavorites]= useState([])
   const [searchParams, setSearchParams] = useState({
     zipCode: '',
     breed: ''
@@ -76,9 +76,12 @@ const DogsSearch = () => {
     chooseDog(options)
   }
 
-  const addFavorite = (dogId) => {
-    setFavorite([...favorite, dogId])
-  }
+
+
+  const addFavorite = (dog) => {
+    setFavorites([...favorites, dog]);
+  };
+
   const handleNextPage = async () => {
     setDogs((await dogService.getNextPage(next)).dogDetails)
     setNext((await dogService.getNextPage(next)).next)
@@ -132,7 +135,8 @@ const DogsSearch = () => {
       // console.log(d.id)
       <>
         {/* // console.log(d.id) */}
-          <DogCard d={d} />
+          <DogCard d={d} key={d.id}/>
+          <button onClick={() => addFavorite(d)}>Add to Favorites</button>
         </>
     )
     :
