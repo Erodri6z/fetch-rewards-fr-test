@@ -79,8 +79,8 @@ const DogsSearch = () => {
 
 
   const addFavorite = (dog) => {
-    setFavorites([...favorites, dog]);
-  };
+    setFavorites([...favorites, dog])
+  }
 
   const handleNextPage = async () => {
     setDogs((await dogService.getNextPage(next)).dogDetails)
@@ -136,7 +136,7 @@ const DogsSearch = () => {
       <>
         {/* // console.log(d.id) */}
           <DogCard d={d} key={d.id}/>
-          <button onClick={() => addFavorite(d)}>Add to Favorites</button>
+          <button onClick={() => addFavorite(d.id)}>Add to Favorites</button>
         </>
     )
     :
