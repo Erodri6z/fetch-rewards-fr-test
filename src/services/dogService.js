@@ -122,8 +122,8 @@ async function getMatch(dogs) {
     body: JSON.stringify(dogs)
   }) 
   const matchedDog = await dogId.json()
-  const match = matchedDog.match
-  // console.log(match)
+  const match = [matchedDog.match]
+  console.log(match)
 
   const dogDetails = await fetch(`${BASE_URL}/dogs`, {
     method: "POST",
@@ -132,12 +132,12 @@ async function getMatch(dogs) {
       'Set-Cookie': 'SameSite=None'
     },
     credentials: 'include',
-    body: JSON.stringify([match])
+    body: JSON.stringify(match)
   })
   // console.log(dogDetails)
   let dogDetail = await dogDetails.json()
   let results = dogDetail
-  // console.log(await results)
+  // console.log(results)
   return await results
 }
 

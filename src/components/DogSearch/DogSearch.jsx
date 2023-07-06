@@ -13,9 +13,8 @@ const DogsSearch = () => {
     breed: ''
   })
   
-  const dogIdNumbers = dogs.map((dog) => dog.id)
   const locationData = [parseInt(searchParams.zipCode.substring(0, 5))]
-
+  
   useEffect(() => {
     const fetchAllBreeds = async () => {
       const dogBreeds = await dogService.getBreeds()
@@ -23,8 +22,8 @@ const DogsSearch = () => {
     }
     fetchAllBreeds()
   }, [])
-
-
+  
+  
   useEffect(() => {
     const fetchDogs = async () => {
       const doggos = await dogService.getDogs()
@@ -50,14 +49,19 @@ const DogsSearch = () => {
       console.log(err)
     }
   }
-
+  
   const chooseDog = (pups) => {
+    // const dogIdNumbers = pups.map((dog) => dog.id)
+    // console.log(dogIdNumbers)
     const selectedDog = dogService.getMatch(pups)
-    console.log(selectedDog)
+    // console.log(selectedDog)
+    setDogs(selectedDog)
   }
 
   const chooseRandom = () => {
-    chooseDog(dogIdNumbers)
+    const options = dogs.map((dog) => dog.id )
+    console.log(options)
+    chooseDog(options)
   }
   
   const handleNextPage = async () => {
