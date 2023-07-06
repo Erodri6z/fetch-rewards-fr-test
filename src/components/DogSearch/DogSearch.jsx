@@ -39,11 +39,13 @@ const DogsSearch = () => {
   useEffect(() => {
     const fetchDogs = async () => {
       const doggos = await dogService.getDogs()
-      setDogs(doggos.dogDetails.sort())
+      setDogs(doggos.dogDetails)
       setNext(doggos.next)
     }
     fetchDogs()
   }, [])
+
+  
   
   const handleChange = async e => {
     setSearchParams({
@@ -136,7 +138,7 @@ const DogsSearch = () => {
     </div>
     <div className={styles.dogContainer}>
     {dogs.length > 1?
-    dogs.map(d => 
+    dogs.sort((a, b) => a.name.localeCompare(b.name)).map(d => 
       // console.log(d.id)
       <>
         {/* // console.log(d.id) */}
