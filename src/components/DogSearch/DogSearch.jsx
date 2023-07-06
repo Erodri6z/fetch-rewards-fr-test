@@ -135,8 +135,10 @@ const DogsSearch = () => {
       // console.log(d.id)
       <>
         {/* // console.log(d.id) */}
+        <div>
           <DogCard d={d} key={d.id}/>
           <button onClick={() => addFavorite(d.id)}>Add to Favorites</button>
+        </div>
         </>
     )
     :
