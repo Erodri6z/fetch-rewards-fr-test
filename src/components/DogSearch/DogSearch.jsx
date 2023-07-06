@@ -76,6 +76,10 @@ const DogsSearch = () => {
     chooseDog(options)
   }
 
+  const backToTheTop = () => {
+    document.body.scrollIntoView()
+  }
+
 
 
   const addFavorite = (dog) => {
@@ -85,6 +89,7 @@ const DogsSearch = () => {
   const handleNextPage = async () => {
     setDogs((await dogService.getNextPage(next)).dogDetails)
     setNext((await dogService.getNextPage(next)).next)
+    backToTheTop()
   }
   
   // console.log(dogService.getDetails(dogs))
