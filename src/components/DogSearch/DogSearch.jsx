@@ -15,7 +15,7 @@ const DogsSearch = () => {
     breed: ''
   })
   
-  const locationData = [parseInt(searchParams.zipCode.substring(0, 5))]
+  // const locationData = [parseInt(searchParams.zipCode.substring(0, 5))]
 
   const sortAsc = () => {
     const sortedItems = [...dogs].sort((a, b) => a.name.localeCompare(b.name))
@@ -72,7 +72,7 @@ const DogsSearch = () => {
   }
 
   const chooseRandom = () => {
-    const options = dogs.map((dog) => dog.id )
+    const options = favorites
     chooseDog(options)
   }
 
@@ -149,7 +149,7 @@ const DogsSearch = () => {
     <h3>No Doggos found</h3>
     }
     </div>
-    <button onClick={chooseRandom}>Cant Pick? We'll pick for you</button>
+    <button onClick={chooseRandom}>See whos a Match</button>
     <button onClick={handleNextPage} className={styles.btn}>Next</button>
     {/* <h3>looking for {location[0].state}, {location[0].city}</h3> */}
     </>
