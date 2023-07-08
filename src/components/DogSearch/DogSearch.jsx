@@ -17,14 +17,16 @@ const DogsSearch = () => {
   
   // const locationData = [parseInt(searchParams.zipCode.substring(0, 5))]
 
-  const sortAsc = () => {
-    const sortedItems = [...dogs].sort((a, b) => a.breed.localeCompare(b.breed))
-    setDogs(sortedItems)
+  async function sortAsc() {
+    const doggos = await dogService.getDogs()
+    setDogs(doggos.dogDetails)
+    setNext(doggos.next)
   }
 
-  const sortDsc = () => {
-    const sortedItems = [...dogs].sort((a, b) => b.breed.localeCompare(a.breed))
-    setDogs(sortedItems)
+  async function sortDesc() {
+    const doggos = await dogService.getDogsDesc()
+    setDogs(doggos.dogDetails)
+    setNext(doggos.next)
   }
   
   useEffect(() => {
@@ -132,7 +134,7 @@ const DogsSearch = () => {
         <button type="submit">Search</button>
       </form>
       <button onClick={sortAsc}>Asc</button>
-      <button onClick={sortDsc}>Dsc</button>
+      <button onClick={sortDesc}>Dsc</button>
     </div>
     <div>
     </div>
