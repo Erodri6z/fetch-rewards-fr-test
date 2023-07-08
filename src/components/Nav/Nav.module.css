@@ -2,9 +2,11 @@
   list-style: none;
   position: relative;
   margin-right: 20px;
+  margin-top: 10px;
 }
 .title {
-  font-weight: 400;
+  font-weight: 600;
+  margin-top: 20px;
   margin-left: 20px;
 }
 

@@ -13,7 +13,7 @@ const DogCard = (props) => {
         <h5 className="card-title">{dog.name}</h5>
         <p className="card-text">Age : {dog.age} year(s) old</p>
       <p className="card-text">Breed : {dog.breed}</p>
-      <p className="card-text">Location : {dog.zip_code}</p>
+      <p className="card-text">Zip Code : {dog.zip_code}</p>
       </div>
     </div>
     </>

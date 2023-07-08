@@ -3,7 +3,6 @@ import * as dogService from '../../services/dogService'
 import styles from './DogsSearch.module.css'
 import DogCard from "../DogCards/DogCards"
 import ChosenDog from "../ChosenDog/ChosenDog"
-// import { Await } from "react-router-dom"
 
 const DogsSearch = () => {
   const [breeds, setBreeds] = useState([])
@@ -15,7 +14,7 @@ const DogsSearch = () => {
     breed: ''
   })
   
-  // const locationData = [parseInt(searchParams.zipCode.substring(0, 5))]
+
 
   async function sortAsc() {
     const doggos = await dogService.getDogs()
@@ -96,9 +95,6 @@ const DogsSearch = () => {
     backToTheTop()
   }
   
-  // console.log(dogService.getDetails(dogs))
-  // console.log(dogIdNumbers)
-      
       return (
         <>
     <div className={styles.searchForm}>
@@ -116,7 +112,6 @@ const DogsSearch = () => {
             <option value={b} key={b}>{b}</option>
             )}
         </select>
-        {/* <br /> */}
         <label 
         htmlFor="location"
         >
@@ -161,7 +156,6 @@ const DogsSearch = () => {
     </div>
     <button onClick={chooseRandom}>See whos a Match</button>
     <button onClick={handleNextPage} className={styles.btn}>Next</button>
-    {/* <h3>looking for {location[0].state}, {location[0].city}</h3> */}
     </>
   )
 }
