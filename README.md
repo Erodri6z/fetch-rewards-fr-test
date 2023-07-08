@@ -60,5 +60,6 @@ or
 ## Technologies Used
 - Vite
 - Bootstrap
+- Google Fonts
 - React.js
 - JavaScript
