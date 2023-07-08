@@ -70,6 +70,7 @@ const Register = (props) => {
           id="name"
           value={name}
           name="name"
+          className='form-control'
           onChange={handleChange} />
       </div>
       <div className={styles.inputContainer}>
@@ -81,6 +82,7 @@ const Register = (props) => {
           id="email"
           value={email}
           name="email"
+          className='form-control'
           onChange={handleChange} />
       </div>
       <div className={styles.inputContainer}>

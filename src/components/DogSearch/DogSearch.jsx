@@ -82,9 +82,9 @@ const DogsSearch = () => {
   const backToTheTop = () => {
     document.body.scrollIntoView()
   }
-
-
-
+  
+  
+  
   const addFavorite = (dog) => {
     setFavorites([...favorites, dog])
   }
@@ -95,8 +95,8 @@ const DogsSearch = () => {
     backToTheTop()
   }
   
-      return (
-        <>
+  return (
+    <>
     <div className={styles.searchForm}>
       <form onSubmit={handleSearch} className={styles.form}>
         <div className={styles.form}>
@@ -143,6 +143,7 @@ const DogsSearch = () => {
         </div>
         <button type="submit" className="btn btn-success" id={styles.btn}>Search</button>
       </form>
+          <p>Total of {favorites.length} dog(s) are being considered</p>
       <div className={styles.sort}>
         <button onClick={sortAsc}>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-alpha-up-alt" viewBox="0 0 16 16">
@@ -180,7 +181,6 @@ const DogsSearch = () => {
     :
     <h3>No Doggos found</h3>
     }
-    <p>Total of {favorites.length} dog(s) are being considered</p>
     </div>
     <button onClick={chooseRandom}>See whos a Match</button>
     <button onClick={handleNextPage} className={styles.btn}>Next</button>
