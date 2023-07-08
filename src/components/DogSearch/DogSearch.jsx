@@ -157,6 +157,7 @@ const DogsSearch = () => {
     :
     <h3>No Doggos found</h3>
     }
+    <p>Total of {favorites.length} dog(s) are being considered</p>
     </div>
     <button onClick={chooseRandom}>See whos a Match</button>
     <button onClick={handleNextPage} className={styles.btn}>Next</button>

@@ -56,7 +56,6 @@ or
 - Use the sorting feature to sort the dogs by breed in ascending or descending order.
 - Use the search feature to find dogs by breed. Enter the breed name in the search input, and the list will update to display dogs of that breed.
 - Click the "Add to Favorites" button to add a dog to your favorites list.
-- Click the "Favorites" link in the navigation to view your favorites list.
 
 ## Technologies Used
 - Vite
