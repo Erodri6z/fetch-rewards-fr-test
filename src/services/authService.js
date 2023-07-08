@@ -1,9 +1,4 @@
-// import { useState } from "react"
-
-// import * as tokenService from './tokenService'
 const BASE_URL = `https://frontend-take-home-service.fetch.com`
-
-
 
 
 async function signup(data) {
@@ -21,8 +16,6 @@ async function signup(data) {
 
     if (response.ok) {
       console.log('Login successful')
-      // setLoggedIn(true)
-      // console.log(isLoggedIn)
     } else {
       console.log('Login failed')
       throw new Error('Please ensure your information is correct')
@@ -45,9 +38,7 @@ async function logout() {
       credentials: 'include',
     })
     if (res.ok) {
-      // console.log(isLoggedIn)
       console.log("logout successfull")
-      // setLoggedIn(true)
     }
   } catch (err) {
     console.error(err)

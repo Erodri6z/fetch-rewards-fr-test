@@ -6,7 +6,6 @@ async function getBreeds() {
     credentials: 'include'
   }
   )
-  console.log(res)
   return await res.json()
 }
 
@@ -20,7 +19,6 @@ async function getLocations(zipcode) {
     credentials: 'include',
     body: JSON.stringify(zipcode)
   })
-  // console.log(res.json())
   return await res.json()
 }
 
@@ -123,24 +121,9 @@ async function getNextPage(next) {
   return results
 }
 
-  // return await res.json()
 
-// async function getDetails(dogs) {
-//   const res = await fetch(`${BASE_URL}/dogs`, {
-//     method: "POST",
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Set-Cookie': 'SameSite=None'
-//     },
-//     credentials: 'include',
-//     body: JSON.stringify(dogs)
-//   })
-//   // console.log(await res.json())
-//   return res.json()
-// }
 
 async function getMatch(dogs) {
-  // console.log(dogs)
   const dogId = await fetch(`${BASE_URL}/dogs/match`, {
     method: "POST",
     headers: {
@@ -163,11 +146,10 @@ async function getMatch(dogs) {
     credentials: 'include',
     body: JSON.stringify(match)
   })
-  // console.log(dogDetails)
   let dogDetail = await dogDetails.json()
-  let results = dogDetail
+
   return dogDetail
-  // console.log(results)
+
 }
 
 export {
@@ -177,5 +159,5 @@ export {
   getDogsDesc,
   getNextPage,
   getMatch
-  // getDetails
+
 }
