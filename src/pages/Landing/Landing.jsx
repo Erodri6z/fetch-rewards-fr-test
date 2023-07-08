@@ -23,7 +23,6 @@ const Landing = () => {
     <>
     <Nav completeLogout={completeLogout}/>
     <DogsSearch />
-    <p>{`${isLoggedIn}`}</p>
     </>
     :
     <>

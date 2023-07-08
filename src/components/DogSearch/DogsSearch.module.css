@@ -15,11 +15,35 @@ input::-webkit-inner-spin-button {
 .searchForm{
   border: 1px solid gray;
   border-radius: 10px;
-  background-color: grey;
+  background-color: aquamarine;
   position: relative;
   padding: 10px;
   top: 60px;
   left: 0;
   width: 100%;
   z-index: 9999;
+}
+
+.sort{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#zipcode{
+  max-width: 100px;
+  max-height: 40px;
+}
+
+.form{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#breed {
+  max-width: 200;
+  display: flex;
+}
+
+#btn{
+  height: 40px;
 }

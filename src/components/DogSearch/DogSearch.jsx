@@ -98,38 +98,55 @@ const DogsSearch = () => {
       return (
         <>
     <div className={styles.searchForm}>
-      <form onSubmit={handleSearch}>
-        <label>Select a Breed</label>
-        <select name="breed" 
-        id="breed" 
-        value={searchParams.breed} 
-        onChange={handleChange}
-        >
-          <option value="">
-            Select a breed
-          </option>
-          {breeds.map(b => 
-            <option value={b} key={b}>{b}</option>
-            )}
-        </select>
-        <label 
-        htmlFor="location"
-        >
-          Zipcode
-        </label>
-        <input 
-        type="number" 
-        value={searchParams.zipCode} 
-        name="zipCode"
-        inputMode="numeric" 
-        id={styles.zipcode} 
-        pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$" 
-        onChange={handleChange}
-        />
-        <button type="submit">Search</button>
+      <form onSubmit={handleSearch} className={styles.form}>
+        <div className={styles.form}>
+
+        <div className="input-group mb-3">
+          {/* <div className="input-group">
+            <label className="input-group-text">Select a Breed</label>
+          </div> */}
+          <select name="breed" 
+          id={styles.breed} 
+          className="form-control"
+          value={searchParams.breed} 
+          onChange={handleChange}
+          >
+            <option value="">
+              Select a breed
+            </option>
+            {breeds.map(b => 
+              <option value={b} key={b}>{b}</option>
+              )}
+          </select>
+        </div>
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <label 
+            htmlFor="location"
+            className="input-group-text"
+            >
+            Zipcode
+          </label>
+          </div>
+          <input 
+          type="number" 
+          value={searchParams.zipCode} 
+          name="zipCode"
+          inputMode="numeric" 
+          id={styles.zipcode}
+          className="form-control" 
+          pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$" 
+          onChange={handleChange}
+          />
+          </div>
+
+        </div>
+        <button type="submit" className="btn btn-success" id={styles.btn}>Search</button>
       </form>
-      <button onClick={sortAsc}>Asc</button>
-      <button onClick={sortDesc}>Dsc</button>
+      <div className={styles.sort}>
+        <button onClick={sortAsc}>Asc</button>
+        <button onClick={sortDesc}>Dsc</button>
+      </div>
     </div>
     <div>
     </div>
